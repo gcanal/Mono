@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mono Web</title>
+  <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.css">
+  <script src="static/jquery-3.1.1.js" /> </script>
+  <script src="static/bootstrap-3.3.7-dist/js/bootstrap.js">
+  </script>
+  <script src="static/angular-1.6.2/angular.js"></script>
+  <!-- <script src="static/angular-1.6.2/angular.min.js"></script> -->
+  <script src="static/angular-xeditable-0.6.0/js/xeditable.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/dataTables/datatables.css"/>
+  <link rel="stylesheet" type="text/css" href="css/toast.css"/>
+  <script type="text/javascript" src="static/dataTables/datatables.js"></script>
+  <script src="app.js"></script>
+  <script src="js/Constants.js"></script>
+  <script src="js/Conversation.js"></script>
+  <script src="js/ConvsController.js"></script>
+  <script src="js/Iface.js"></script>
+  <script src="js/IPV4TabController.js"></script>
+  <script src="js/MITMConvsTabController.js"></script>
+  <script src="js/Model.js"></script>
+  <script src="js/Packet.js"></script>
+  <script src="js/PacketsMITMTabController.js"></script>
+  <script src="js/PacketsTabController.js"></script>
+  <script src="js/Session.js"></script>
+  <script src="js/SublistMITMTabController.js"></script>
+  <script src="js/SublistTabController.js"></script>
+  <script src="js/TabController.js"></script>
+  <script src="js/TCPTabController.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/UDPTabController.js"></script>
+
+  <!-- <script
+  src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"/>
+</script>
+<link rel="stylesheet"
+href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+</script>
+<script
+src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js">
+</script>
+<script src="app.js">
+</script> -->
+</head>
+<!-- Controller name goes here -->
+<body ng-app="monoApp">
+  <div class="container-fluid" ng-controller="monoController as mono">
+    <div class="page-header">
+      <h1>Mono the packet capturer <small>¡Ay qué mono!</small> </h1>
+    </div>
+    <div ng-include = "'html/sessions-list.html'" class="col-sm-2">
+      <!-- SESSION LIST -->
+    </div>
+    <!-- when $scope.myValue is truthy (element is visible) -->
+    <section ng-show="current_session.id_session">
+      <div class="col-md-10" >
+        <div class=row ng-include = "'html/session-top.html'" >
+          <!-- SESSION TOP -->
+        </div>
+        <div  ng-include = "'html/packets.html'" >
+          <!-- PACKETS TAB -->
+        </div>
+  </div>
+</section>
+</div>
+<div id="toast" style='display:none'></div>
+</body>
+</html>

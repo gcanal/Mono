@@ -1,0 +1,35 @@
+<!-- SESSION TOP -->
+
+<div class="col-md-6">
+    <!-- style="background-color:yellow" -->
+    <a href="#" class=" pull-right btn btn-danger" ng-click="mono.deleteSessionAsk()">
+        <span class="glyphicon glyphicon-remove"></span> Delete
+    </a>
+    Session:
+    <a href="#" editable-text="mono.newName" onaftersave="mono.updateName()">
+  {{ current_session.name || "" }}
+</a>
+    <br/> Interface:
+    <a href="#" editable-radiolist="mono.newIface" e-ng-options="i.index as i.name for i in ::ifaces track by i.index" onaftersave="mono.updateIface()">
+{{ current_session.iface || "" }}
+</a>
+    <br/> Date: {{current_session.date | date:'medium' }}
+    <br/> packets: {{current_session.packets.length}}
+</div>
+<div class="col-md-6"> <!-- style="background-color:red" -->
+  <div class="pull-right btn-group btn-group-md">
+    <!-- <button type="button" class="btn btn-primary">Stop</button> -->
+    <a href="#" ng-click="mono.startStopRequest()"
+    class="btn btn-primary" role="button"
+    ng-class="{active: active}"> <!-- assign .active if $scope.active -->
+    {{active ? 'Stop Session' : 'Start Session'}}</a>
+    <a href="#" ng-click="mono.startStopMitm()"
+    class="btn btn-primary" role="button"
+    ng-class="{mitm_active: active}"> <!-- assign .active if $scope.active -->
+    {{mitm_active ? 'Stop Mitm' : 'Start Mitm'}}</a>
+    <!-- <a href="#" ng-click="mono.stopRequest()"
+    class="btn btn-primary" role="button"
+    ng-class="{active: !active}">
+    Stop</a> -->
+  </div>
+</div>

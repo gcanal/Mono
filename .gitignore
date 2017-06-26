@@ -1,0 +1,13 @@
+
+#python 
+*.pyc
+
+#generated files
+*.pcap
+*.swp
+
+*zip
+
+#private files
+mono_config.py
+mono.mono_config.py

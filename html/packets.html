@@ -1,0 +1,72 @@
+<div class="col-md-12" ng-controller="ConvsController as convs">
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: convs.isSelected(convs.packets_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.packets_tab)">Packets</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.ip_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.ip_tab)">Conversations IPV4</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.udp_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.udp_tab)">Conversations UDP</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.tcp_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.tcp_tab)">Conversations TCP</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.applis_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.applis_tab)"> Conversations by applis</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.mitm_packets_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.mitm_packets_tab)"> MITM Packets</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.mitm_conv_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.mitm_conv_tab)"> Conversations MITM</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.sublist_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.sublist_tab)">{{convs.sublist_name}}</a>
+    </li>
+    <li ng-class="{active: convs.isSelected(convs.sublist_mitm_tab)}">
+      <a href="#" ng-click="convs.setTab(convs.sublist_mitm_tab)">{{convs.sublist_mitm_name}}</a>
+    </li>
+  </ul>
+
+  <!-- DOWNLOAD BUTTON -->
+  <div class="pull-right btn-group btn-group-md">
+    <!-- <button type="button" class="btn btn-primary">Stop</button> -->
+    <a href="/download?id_session={{current_session.id_session}}&conversation_type={{convs.tab}}"
+    class="btn btn-primary" role="button">
+    Download pcap </a>
+  </div>
+
+  <div ng-show="convs.isSelected(convs.packets_tab)" ng-include="'html/datatable-packets.html'">
+    <!-- PACKETS -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.ip_tab)" ng-include="'html/datatable-ipv4.html'">
+    <!-- IPV4 CONVERSATIONS -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.udp_tab)" ng-include="'html/datatable-udp.html'">
+    <!-- TCP CONVERSATIONS -->
+  </div>
+
+<!-- NO Appli CONVERSATIONS -->
+
+  <div ng-show="convs.isSelected(convs.tcp_tab)" ng-include="'html/datatable-tcp.html'">
+    <!-- TCP CONVERSATIONS -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.mitm_packets_tab)" ng-include="'html/datatable-mitm-packets.html'">
+    <!-- MITM PACKETS  -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.mitm_conv_tab)" ng-include="'html/datatable-mitm-convs.html'">
+    <!-- MITM CONVERSATIONS  -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.sublist_tab)" ng-include="'html/datatable-sublist.html'">
+    <!-- SUBLIST  -->
+  </div>
+
+  <div ng-show="convs.isSelected(convs.sublist_mitm_tab)" ng-include="'html/datatable-mitm-sublist.html'">
+    <!-- SUBLIST  MITM -->
+  </div>

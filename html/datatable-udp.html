@@ -1,0 +1,31 @@
+<div class="col-md-12" ng-controller="UDPTabController as udpTab">
+  <!-- UDP Conversations -->
+  <h1>Conversations UDP </h1>
+  <button class= "btn btn-primary" ng-click="udpTab.selectAll()"> Select All </button>
+  <button class= "btn btn-primary" ng-click="udpTab.unselectAll()"> Unselect All </button>
+  <table cellpadding="0" cellspacing="0" border="0" class="display" id="conversations_udp_table">
+    <thead>
+      <tr>
+        <th align="left">Sel.</th>
+        <th align="left">ID conv</th>
+        <th align="left">IP A</th>
+        <th align="left">Port A</th>
+        <th align="left">Ip B</th>
+        <th align="left">Port B</th>
+        <th align="left">Bytes</th>
+        <th align="left">Packets</th>
+        <th align="left">Rel Start</th>
+        <th align="left">Duration</th>
+        <th align="left">Packets A-B</th>
+        <th align="left">Packets B-A</th>
+        <th align="left">Bytes A-B</th>
+        <th align="left">Bytes B-A</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3" class="dataTables_empty">Loading data from server</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

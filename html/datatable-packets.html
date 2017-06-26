@@ -1,0 +1,31 @@
+<!-- PACKETS -->
+<div class="col-md-12" ng-controller="PacketsTabController as packetsTab">
+<h1> Packets </h1>
+<button class= "btn btn-primary" ng-click="packetsTab.selectAll()"> Select All </button>
+<button class= "btn btn-primary" ng-click="packetsTab.unselectAll()"> Unselect All </button>
+<button class= "btn btn-primary" ng-click="packetsTab.showDetails()"> Show Details</button>
+<button class= "btn btn-primary" ng-click="packetsTab.hideDetails()"> Hide Details </button>
+
+<span class = "pull-right"> <input ng-model="packetsTab.packet_search_payload" type= "checkbox"/> Search in Payload</span>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="packets_table">
+  <thead>
+    <tr>
+      <th align="left">Sel.</th>
+      <th align="left">ID packet</th>
+      <th align="left">IP source</th>
+      <th align="left">IP destination</th>
+      <th align="left">Port src</th>
+      <th align="left">Port dst</th>
+      <th align="left">L4 proto</th>
+      <th align="left">Packet length</th>
+      <th align="left">L5 proto</th>
+      <th align="left">Constructor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3" class="dataTables_empty">Loading data from server</td>
+    </tr>
+  </tbody>
+</table>
+</div>
