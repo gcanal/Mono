@@ -16,11 +16,42 @@ See the presentation video at: https://www.youtube.com/watch?v=pdM-xI4LYjI&featu
 
 # Requirements
 
--A static IP server with root access
--An OpenVPN client installed on the device to monitor
--An OpenVPN server installed on your server
+- A static IP server with root access
+- An OpenVPN client installed on the device to monitor
+- An OpenVPN server installed on your server
 
-#Installation
+## Basic configuration of an OpenVPN server
+Install OpenVPN and generate keys and certificates
+```bash
+apt install openvpn
+cp -a /usr/share/easy-rsa /etc/openvpn/
+cd /etc/openvpn/easy-rsa
+source vars
+./clean-all
+./build-ca #generate certificate in keys cat.crt ca.key
+./build-dh #generate diffie hellman keys #this is going to take a long time
+./build-key-server srvcert #generate server certificates
+```
+Copy default configuration file 
+```bash
+gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
+```
+fill in  ca, cert and dh (diffie-hellman keys) fields
+```bash
+ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt #Certificate of authority of the server -> Will authentify the client
+cert /etc/openvpn/easy-rsa/2.0/keys/srvcert.crt # server's certificate
+key  /etc/openvpn/easy-rsa/2.0/keys/srvcert.key # server's private key -> This file should be kept secret
+dh /etc/openvpn/easy-rsa/2.0/keys/dh1024.pem # Diffie Hellamn parameters (used to encrypt the session, RSA keypair is used for authentication. 
+```
+Use a Push option to change the client's DNS server
+```bash
+push "dhcp-option DNS 213.186.33.99" 
+```
+Default port and protocol are: 
+```bash
+1194/udp
+```
+# Installation
 
 ## Configure the database
 ```bash
@@ -39,6 +70,7 @@ vim mono_config.py
 #Fill in the settings
 ```
 
-## Configure the OpenVPN tunnel
+## Install Python 3 dependencies
+
 
 
