@@ -31,6 +31,13 @@ mysql> CREATE DATABASE mono;
 mysql> Use mono
 mysql> source mono.sql;
 ```
+## Edit the settings
+```bash
+cd mono
+cp mono_config_skeleton.py mono_config.py
+vim mono_config.py
+#Fill in the settings
+```
 
 ## Configure the OpenVPN tunnel
 
