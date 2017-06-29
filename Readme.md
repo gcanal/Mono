@@ -7,12 +7,18 @@ and store packets. It also runs a web server
 ![Mono Architecture](https://github.com/gcanal/Mono/blob/master/imgs/use_case_3.png)
 
 
+The code in this repository implements the monitoring server. It is coded in Python 3 with: 
+- Flask + MySQL + Scapy3k + mitmproxy on the server side 
+- Angular JS on the client side 
+
+
 See the presentation video at: https://www.youtube.com/watch?v=pdM-xI4LYjI&feature=youtu.be
 
 # Requirements
 
 -A static IP server with root access
 -An OpenVPN client installed on the device to monitor
+-An OpenVPN server installed on your server
 
 #Installation
 
@@ -21,5 +27,4 @@ See the presentation video at: https://www.youtube.com/watch?v=pdM-xI4LYjI&featu
 
 ## Configure the OpenVPN tunnel
 
-# Documentation
-/bin/bash: q : commande introuvable
+
