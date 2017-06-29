@@ -91,7 +91,9 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 # Installation
 
 ## Install Python 3 dependencies
-
+```bash
+pip3 install pymysql python3-scapy flask netifaces mitmproxy 
+```
 ## Configure the database
 ```bash
 sudo service mysql start
