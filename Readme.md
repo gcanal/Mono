@@ -23,7 +23,14 @@ See the presentation video at: https://www.youtube.com/watch?v=pdM-xI4LYjI&featu
 #Installation
 
 ## Configure the database
-
+```bash
+sudo service mysql start
+mysql -u root -p 
+Enter password: 
+mysql> CREATE DATABASE mono;
+mysql> Use mono
+mysql> source mono.sql;
+```
 
 ## Configure the OpenVPN tunnel
 
