@@ -52,7 +52,7 @@ Default port and protocol are:
 ```bash
 1194/udp
 ```
-## Create a client profile
+## Create a client profile
 ```bash
 cd /etc/openvpn/easy-rsa/
 source vars
@@ -72,7 +72,8 @@ Create unified openvpn proile (.ovpn): we append the CA certificate and the clie
    cat /etc/openvpn/easy-rsa/keys/client1.key >> /etc/openvpn/client.ovpn
    echo '</key>' >> /etc/openvpn/client.ovpn
 ```
-## Configure server as router and NAT.
+## Configure server as router and NAT.
+
 In **/etc/sysctl.conf**, set
 ```bash
 net.ipv4.ip_forward=1
@@ -88,6 +89,8 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
 
 # Installation
+
+## Install Python 3 dependencies
 
 ## Configure the database
 ```bash
@@ -106,7 +109,9 @@ vim mono_config.py
 #Fill in the settings
 ```
 
-## Install Python 3 dependencies
-
+## Run the server
+```bash
+sudo python3 server.py
+```
 
 
