@@ -36,6 +36,7 @@ Copy default configuration file
 ```bash
 gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
 ```
+Security Parameters
 fill in  ca, cert and dh (diffie-hellman keys) fields
 ```bash
 ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt #Certificate of authority of the server -> Will authentify the client
@@ -51,6 +52,41 @@ Default port and protocol are:
 ```bash
 1194/udp
 ```
+## Create a client profile
+```bash
+cd /etc/openvpn/easy-rsa/
+source vars
+./build-key client #will generate client.key and client.crt
+```
+Create unified openvpn proile (.ovpn): we append the CA certificate and the client keys to the profile
+```bash
+   cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/ 
+   cp /etc/openssl/client.conf /etc/openssl/client.ovpn
+   echo '<ca>' >> /etc/openvpn/client.ovpn
+   cat /etc/openvpn/ca.crt >> /etc/openvpn/easy-rsa/keys/client.ovpn
+   echo '</ca>' >> /etc/openvpn/client.ovpn
+   echo '<cert>' >> /etc/openvpn/client.ovpn
+   cat /etc/openvpn/easy-rsa/keys/client1.crt >> /etc/openvpn/client.ovpn
+   echo '</cert>' >> /etc/openvpn/client.ovpn
+   echo '<key>' >> /etc/openvpn/client.ovpn
+   cat /etc/openvpn/easy-rsa/keys/client1.key >> /etc/openvpn/client.ovpn
+   echo '</key>' >> /etc/openvpn/client.ovpn
+```
+## Configure server as router and NAT.
+In **/etc/sysctl.conf**, set
+```bash
+net.ipv4.ip_forward=1
+```
+and then reload configuration
+```bash
+sysctl -p /etc/sysctl.conf
+```
+Add this iptables command for NATing
+```bash
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+```
+
+
 # Installation
 
 ## Configure the database
